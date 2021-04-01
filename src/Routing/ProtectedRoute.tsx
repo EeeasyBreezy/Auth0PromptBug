@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { Route, RouteProps } from 'react-router-dom';
 import { Spinner, SpinnerSize } from '@fluentui/react';
 
@@ -25,8 +25,12 @@ const ProtectedRoute: FC<Props> = ({ allowedRoles, component, ...args }: Props) 
 
     let componentToUse = component;
 
+    const onRedirect = (): JSX.Element => {
+        return <LoadingOverlay />
+    }
+
     const wrappedComponent = componentToUse
-        ? withAuthenticationRequired(componentToUse,  { onRedirecting: () => <LoadingOverlay /> })
+        ? withAuthenticationRequired(componentToUse,  { onRedirecting: onRedirect })
         : componentToUse;
 
     return <Route {...args} component={wrappedComponent} />;
