@@ -1,9 +1,8 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { BrowserRouter, Link, Route, Switch, useHistory } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
 import EditFormParent, { EditFormParentProps } from './Forms/EditFormParent';
 import { Button } from '@material-ui/core';
-import { EditFormProps } from './Forms/EditForm';
 import ProtectedRoute from './Routing/ProtectedRoute';
 import Auth0ProviderWithHistory from './Routing/Auth0ProviderWithHistory';
 
